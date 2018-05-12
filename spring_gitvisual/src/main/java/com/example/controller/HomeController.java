@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-
 public class HomeController {
     @RequestMapping("/git_visual")
     //当访问http://localhost:8080/spring_gitvisual/git_visual
