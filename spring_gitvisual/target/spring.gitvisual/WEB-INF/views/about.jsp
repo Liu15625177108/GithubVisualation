@@ -30,7 +30,8 @@
                                             <div class="ui list">
                                                 <div class="item">核心框架：Spring Framework 4.3</div>
                                                 <div class="item">视图框架：Spring MVC 4.3</div>
-                                                <div class="item">数据库：MySQL</div>
+                                                <div class="item">数据库：MySQL 8.0</div>
+                                                <div class="item">数据库连接池：HiKariCP 2.7</div>
                                             </div>
                                         </div>
                                     </div>
@@ -42,6 +43,7 @@
                                                 <div class="item">UI：Semantic UI 2.3</div>
                                                 <div class="item">JS：JQuery 3.3</div>
                                                 <div class="item">脚手架：rapid-framework 4.0</div>
+                                                <div class="item">图表：ECharts 2.0</div>
                                             </div>
                                         </div>
                                     </div>
