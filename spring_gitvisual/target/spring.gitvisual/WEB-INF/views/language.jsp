@@ -11,7 +11,7 @@
 <%@ page isELIgnored="false" %><%--这个非常重要--%>
 
 <rapid:override name="content">
-    <div class="ui equal width grid" style="margin: 5px 0 5px 30px;width: 70%">
+    <div class="ui equal width grid" style="margin: 5px 0 5px 30px;width: 75%">
         <div class="row">
             <div class="column">
                 <!--以下为图表区域-->
@@ -20,7 +20,7 @@
                         <a class="active item" id="read">用户数</a>
                         <a class="item" id="like">仓库数</a>
                     </div>
-                    <div class="ui bottom attached segment" id="chart" style="height: 400px"></div>
+                    <div class="ui bottom attached segment" id="chart" style="height: 400px;padding: 2px"></div>
 
                     <!--测试用，正式版请删除这个div-->
                     <div id="test">
