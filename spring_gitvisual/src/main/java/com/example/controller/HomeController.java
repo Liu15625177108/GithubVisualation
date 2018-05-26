@@ -41,6 +41,7 @@ public class HomeController {
     public String about(){
         return "about";
     }
+
     @RequestMapping("/language")
     //http://localhost:8080/spring_gitvisual/language
     public String language(ModelMap model){
@@ -49,5 +50,23 @@ public class HomeController {
         model.addAttribute("lan",lan);
         model.addAttribute("lanList",lanList);
         return "language";
+    }
+
+    @RequestMapping("/area")
+    //http://localhost:8080/spring_gitvisual/area
+    public String area(){
+        return "area";
+    }
+
+    @RequestMapping("/repository")
+    //http://localhost:8080/spring_gitvisual/repository
+    public String repository(){
+        return "repository";
+    }
+
+    @RequestMapping("/user")
+    //http://localhost:8080/spring_gitvisual/user
+    public String user(){
+        return "user";
     }
 }

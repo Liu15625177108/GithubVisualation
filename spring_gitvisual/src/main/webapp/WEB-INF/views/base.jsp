@@ -37,15 +37,15 @@
         语言/Language
         <i class="sellsy icon"></i>
     </a>
-    <a class="item">
+    <a class="item" id="area" href="http://localhost:8080/spring_gitvisual/area">
         地区/Area
         <i class="pagelines icon"></i>
     </a>
-    <a class="item">
+    <a class="item" id="repository" href="http://localhost:8080/spring_gitvisual/repository">
         仓库/Repository
         <i class="simplybuilt icon"></i>
     </a>
-    <a class="item">
+    <a class="item" id="user" href="http://localhost:8080/spring_gitvisual/user">
         用户/User
         <i class="computer icon"></i>
     </a>
