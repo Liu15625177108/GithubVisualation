@@ -20,6 +20,8 @@ public class languageServiceImpl implements languageService {
     public List<language> findAll() {
         return lanDAO.findAll();
     }
-
-
+    @Override
+    public List<language> sortByRep() {
+        return lanDAO.sortByRep();
+    }
 }

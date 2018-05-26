@@ -8,4 +8,5 @@ import java.util.List;
 public interface languageDAO {
     language findByType(String type);
     List<language> findAll();
+    List<language> sortByRep();
 }

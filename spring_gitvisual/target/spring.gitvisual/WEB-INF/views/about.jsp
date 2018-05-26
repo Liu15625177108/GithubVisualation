@@ -15,7 +15,7 @@
                 <div class="ui container segment">
                     <div class="content">
                         <div>
-                            <h2 class="ui header">关于我们</h2>
+                            <h2 class="ui header">关于我们</h2>&nbsp;
                         </div>
                         <div class="description">
                             <span class="ui label" style="color: rgba(0,132,255,0.76)">计算机</span>
@@ -50,13 +50,18 @@
 
                                     <div class="item">
                                         <div class="content">
-                                            <a class="header">服务器</a>
+                                            <a class="header">数据获取</a>
+                                            <div class="ui list">
+                                                <div class="item">编程：Python 3.6</div>
+                                                <div class="item">数据来源：GitHub api v3</div>
+                                                <div class="item">数据库：MySQL 8.0</div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="item">
                                         <div class="content">
-                                            <a class="header">数据获取</a>
+                                            <a class="header">服务器</a>
                                         </div>
                                     </div>
                                 </div>

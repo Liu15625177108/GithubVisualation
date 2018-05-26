@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="rapid" uri="http://www.rapid-framework.org.cn/rapid" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %><%--这个非常重要--%>
 <rapid:override name="content">
     <div class="ui equal width grid" style="margin: 5px 0 5px 30px;width: 70%">
         <div class="row">
@@ -14,10 +16,10 @@
                 <div class="ui red segment">
                     <div class="ui statistic">
                         <div class="value">
-                            10000
+                                ${repNums}
                         </div>
-                        <div class="label">
-                            Data
+                        <div style="font-size: 16px">
+                            <strong>&nbsp;&nbsp;&nbsp;&nbsp;GitHub Repositories</strong>
                         </div>
                     </div>
                 </div>
@@ -26,10 +28,10 @@
                 <div class="ui blue segment">
                     <div class="ui statistic">
                         <div class="value">
-                            2000
+                                ${userNums}
                         </div>
-                        <div class="label">
-                            Views
+                        <div style="font-size: 16px">
+                            <strong>&nbsp;&nbsp;&nbsp;&nbsp;GitHub Users</strong>
                         </div>
                     </div>
                 </div>
@@ -42,30 +44,14 @@
                     <img src="img/language.jpg" height="100px">
                     <table class="ui striped table" style="margin-top: 0px">
                         <tbody>
-                        <tr>
-                            <td>No.1</td>
-                            <td>Language A</td>
-                        </tr>
-                        <tr>
-                            <td>No.2</td>
-                            <td>Language B</td>
-                        </tr>
-                        <tr>
-                            <td>No.3</td>
-                            <td>Language C</td>
-                        </tr>
-                        <tr>
-                            <td>No.4</td>
-                            <td>Language D</td>
-                        </tr>
-                        <tr>
-                            <td>No.5</td>
-                            <td>Language E</td>
-                        </tr>
-                        <tr>
-                            <td>No.6</td>
-                            <td>Language F</td>
-                        </tr>
+                        <c:forEach begin="0" end="5" var="i">
+                            <c:set var="item" value="${lanList2[i]}"/>
+                            <tr>
+                                <td>No.${i+1}</td>
+                                <td>${item.type}</td>
+                            </tr>
+                        </c:forEach>
+
                         </tbody>
                     </table>
                 </div>

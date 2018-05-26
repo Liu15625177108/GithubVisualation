@@ -34,19 +34,19 @@
         </a>
     </div>
     <a class="item" id="language" href="http://localhost:8080/spring_gitvisual/language">
-        语言
+        语言/Language
         <i class="sellsy icon"></i>
     </a>
     <a class="item">
-        地区
+        地区/Area
         <i class="pagelines icon"></i>
     </a>
     <a class="item">
-        仓库
+        仓库/Repository
         <i class="simplybuilt icon"></i>
     </a>
     <a class="item">
-        用户
+        用户/User
         <i class="computer icon"></i>
     </a>
 </div>

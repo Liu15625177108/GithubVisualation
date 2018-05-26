@@ -26,15 +26,15 @@
                     <div id="test">
                         <p>测试用，正式版请删除这个div</p>
                         <p>语言:${lan.type}&nbsp;&nbsp;仓库数:${lan.repositories}&nbsp;&nbsp;用户数:${lan.users}</p>
-                        <c:forEach items="${lanList}" var="lan2">
-                            <table>
+                        <table>
+                            <c:forEach items="${lanList}" var="lan2">
                                 <tr>
                                     <td>${lan2.type} </td>
                                     <td>${lan2.users} </td>
                                     <td>${lan2.repositories} </td>
                                 </tr>
-                            </table>
-                        </c:forEach>
+                            </c:forEach>
+                        </table>
                     </div>
 
                 </div>

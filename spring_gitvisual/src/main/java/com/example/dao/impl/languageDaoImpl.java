@@ -33,4 +33,10 @@ public class languageDaoImpl implements languageDAO {
         String sql = "SELECT * FROM language";
         return this.template.query(sql, new Object[]{}, new languageMapper());
     }
+
+    @Override
+    public List<language> sortByRep(){
+        String sql = "SELECT * FROM language ORDER BY repositories DESC";
+        return this.template.query(sql, new Object[]{}, new languageMapper());
+    }
 }

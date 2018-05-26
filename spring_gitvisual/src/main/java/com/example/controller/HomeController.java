@@ -17,8 +17,23 @@ public class HomeController {
     @RequestMapping("/summary")
     //当访问http://localhost:8080/spring_gitvisual/summary
     //就会执行这个方法
-    public String summary(){
+    public String summary(ModelMap model){
         //return jsp的文件名就可以跳转到对应的jsp
+        List<language> lanList = lanService.findAll();
+        int repNums = 0;
+        int userNums = 0;
+        //获取每种语言的仓库数和用户数，分别相加得到仓库总数和用户总数
+        //这种方法应该没错?总觉得不对——18.05.26 Zhong
+        for(int i=0;i<lanList.size();i++){
+           repNums = repNums + lanList.get(i).getRepositories();
+           userNums = userNums + lanList.get(i).getUsers();
+        }
+        model.addAttribute("repNums",repNums);  //仓库数量
+        model.addAttribute("userNums",userNums);    //用户数量
+
+        //语言榜，按仓库数进行降序排序输出
+        List<language> lanList2 = lanService.sortByRep();
+        model.addAttribute("lanList2",lanList2);
         return "summary";
     }
     @RequestMapping("/about")
