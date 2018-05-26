@@ -17,7 +17,7 @@
                 <!--以下为图表区域-->
                 <div class="ui container segment">
                     <div>
-                       这是菜单栏部分
+                        这是菜单栏部分
                     </div>
                     <div class="ui bottom attached segment" id="chart" style="height: 400px;padding: 2px">
                         这是地区画图的地方

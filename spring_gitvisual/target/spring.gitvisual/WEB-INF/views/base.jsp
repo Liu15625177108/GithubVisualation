@@ -12,8 +12,8 @@
     <meta charset="UTF-8">
     <title>Git-Visualization</title>
     <link rel="stylesheet" href="css/semantic.css"/>
+    <script src="js/jquery.js"></script>    <%--放在semantic.js前面--%>
     <script src="js/semantic.js"></script>
-    <script src="js/jquery.js"></script>
     <script src="js/echarts.min.js"></script>
     <style>
         body {
