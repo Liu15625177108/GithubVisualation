@@ -15,6 +15,7 @@
     <script src="js/jquery.js"></script>    <%--放在semantic.js前面--%>
     <script src="js/semantic.js"></script>
     <script src="js/echarts.min.js"></script>
+    <script src="js/china.js"></script>
     <style>
         body {
             margin: 0px;

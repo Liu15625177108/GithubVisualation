@@ -78,7 +78,13 @@ public class HomeController {
 
     @RequestMapping("/user")
     //http://localhost:8080/spring_gitvisual/user
-    public String user() {
+    public String user(ModelMap model) {
+        String[] languages = {"JavaScript", "Python", "Java", "C#", "C++", "PHP", "Ruby", "HTML", "C", "Shell"};
+        String[] users = {"Ruan YiFeng", "TJ Holowaychuk", "Evan You", "Ruan YiFeng", "TJ Holowaychuk", "Evan You"};
+        String[] colors = {"orange", "red", "yellow", "olive", "green", "teal", "blue", "violet", "purple", "pink", "brown", "grey", "black"};
+        model.addAttribute("colors", colors);
+        model.addAttribute("users", users);
+        model.addAttribute("languages", languages);
         return "user";
     }
 }

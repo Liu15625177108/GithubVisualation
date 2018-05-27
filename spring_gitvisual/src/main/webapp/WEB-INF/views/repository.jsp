@@ -30,13 +30,23 @@
                 <!--以下为图表区域-->
                 <div class="ui container segment">
                         <%--菜单栏--%>
-                    <div class="ui floating dropdown labeled search icon button">
+                    <div class="ui floating dropdown labeled icon button">
                         <i class="filter icon"></i>
                         <span class="text">Select Language</span>
                         <div class="menu">
-                            <c:forEach items="${languages}" var="lan">
-                                <div class="item">${lan}</div>
-                            </c:forEach>
+                            <div class="ui icon search input">
+                                <i class="search icon"></i>
+                                <input type="text" placeholder="Search tags...">
+                            </div>
+                            <div class="divider"></div>
+                            <div class="scrolling menu">
+                                <c:forEach items="${languages}" var="lan">
+                                    <div class="item">
+                                        <div class="ui empty circular label"></div>
+                                            ${lan}
+                                    </div>
+                                </c:forEach>
+                            </div>
                         </div>
                     </div>
                         <%--图表区域--%>
@@ -48,7 +58,7 @@
     </div>
 
     <script>
-        $('#area').addClass('active');
+        $('#repository').addClass('active');
         $('.ui.floating.dropdown').dropdown();  //下拉菜单
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('chart'));
