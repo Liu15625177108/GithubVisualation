@@ -1,0 +1,9 @@
+使用python3.5 mysql 5.7 以及pymysql
+pymysql 下载链接：https://github.com/PyMySQL/PyMySQL
+pymysql  安装教程：https://cuiqingcai.com/5052.html（1.5.1节）
+
+代码使用前提:在pymysql 连接的mysql中建立数据库命名为gitdata;
+repository.py 执行会在gitdata下建立表language,字段为id（主键）,name(仓库建立者名字)，star(star数目)，url(仓库链接)，language（所属语言种类）
+location.py执行会在gitdata下建立表location，字段为：location(广东，上海，北京之类的选了几个),usernum
+user.py执行会在gitdata建立表（命名规则为user_c,user_java之类的），表中有name 以及url字段
+在user.py中获取followers数目,language时出现了限速问题并且锁定ip(请大佬们解决下)
