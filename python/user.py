@@ -7,47 +7,88 @@ from hashlib import md5
 from multiprocessing.dummy import Pool as ThreadPool
 import  pymysql
 
+
+def getFollowers(url):
+
+    res=requests.get(url,auth=('usename','passward')).json()
+    id=res.get('id')
+    followers=res.get('followers')
+    name=res.get('name')
+    db = pymysql.connect(host='localhost', user='root', password='123456', port=3306, db='gitdata')
+    cursor = db.cursor()
+    sql='update user set followers={} where id={}'.format(followers,id)
+    print(sql)
+    try:
+        cursor.execute(sql)
+        db.commit()
+    except:
+        db.rollback()
+    db.close()
+    # print(followers,name)
+
 def myfun(language):
     url='https://api.github.com/search/users?'
+
 
     params = {
         'q': 'language:'+language,
         'sort':'followers'
     }
     url=url+urlencode(params)
-    print(url);
+    # print(url)
+    # res=requests.get(url,auth=('Liu15625177108','3231433wani1314')).json()
+    # items=res.get('items')
+    # url1=[]
+    # for item in items:
+    #     id=item.get('id')
+    #     login=item.get('login')
+    #     url=item.get('html_url')
+    #     url1.append(item.get('url'))
+    #     # response=requests.get(url1).json()
+    #     # name=response.get('name')
+    #     # followers=response.get('followers')
+    #     print(id,login,url)
+    # print('++++++++++++++++++++++++++')
+    # pool1 = ThreadPool()
+    # pool1.map(getFollowers,url1)
+    # pool1.close()
 
-    db = pymysql.connect(host='localhost',user='root', password='123456', port=3306,db='gitdata')
+    db = pymysql.connect(host='localhost', user='root', password='123456', port=3306, db='gitdata')
     cursor = db.cursor()
-    if language=='C++':
-         L='User_'+'Cplus'
-    else:
-         if language == 'C#':
-            L = 'User_' + 'Cshua'
-         else:
-            L = 'User_' + language
-    sql = 'CREATE TABLE IF NOT EXISTS '+L+'(name VARCHAR(255) NOT NULL,url VARCHAR(255) NOT NULL, PRIMARY KEY (name))'
-    cursor.execute(sql)
-    response=requests.get(url).json();
+    response=requests.get(url,auth=('usename','passward')).json();
     item = response.get('items')
-    sql = 'INSERT INTO '+L+'(name,url) values(%s, %s)'
+    url1=[]
+    sql = 'INSERT INTO User(id,name,url,language) values(%s,%s,%s,%s)'
     for it in item:
-
+     id=it.get('id')
      name=it.get('login')
      url=it.get('html_url')
-
+     url1.append(it.get('url'))
+     # url1=it.get('url')
+     # res=requests.get(url1,auth=('Liu15625177108','3231433wani1314')).json()
+     # followers=res.get('followers')
+     # name=res.get('name')
      try:
-      cursor.execute(sql, (name,url))
+      print(id,name,url,language)
+      cursor.execute(sql, (id,name,url,language))
       db.commit()
      except:
             db.rollback()
     db.close()
+    pool1=ThreadPool()
+    pool1.map(getFollowers,url1)
+    pool1.close()
+    print (language,'finish!')
 
 
 
 if __name__=='__main__':
+    db = pymysql.connect(host='localhost', user='root', password='123456', port=3306, db='gitdata')
+    cursor = db.cursor()
+    sql = 'CREATE TABLE IF NOT EXISTS User(id INT NOT NUll,name VARCHAR(255) NOT NULL,url VARCHAR(255) NOT NULL,followers INT ,language VARCHAR(50) NOT NULL,PRIMARY KEY (id))'
+    cursor.execute(sql)
+    db.close()
     pool = ThreadPool()
     Language = ['JavaScript', 'Python', 'Java', 'PHP', 'Ruby', 'C++', 'C', 'C#', 'Shell', 'HTML']
-
     pool.map(myfun, Language)
     pool.close()
