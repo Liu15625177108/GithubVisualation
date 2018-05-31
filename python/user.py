@@ -17,7 +17,7 @@ def getFollowers(url):
     db = pymysql.connect(host='localhost', user='root', password='123456', port=3306, db='gitdata')
     cursor = db.cursor()
     sql='update user set followers={} where id={}'.format(followers,id)
-    print(sql)
+    print(url,sql)
     try:
         cursor.execute(sql)
         db.commit()
@@ -36,7 +36,7 @@ def myfun(language):
     }
     url=url+urlencode(params)
     # print(url)
-    # res=requests.get(url,auth=('Liu15625177108','3231433wani1314')).json()
+    # res=requests.get(url,auth=('usename','passward')).json()
     # items=res.get('items')
     # url1=[]
     # for item in items:
@@ -55,7 +55,7 @@ def myfun(language):
 
     db = pymysql.connect(host='localhost', user='root', password='123456', port=3306, db='gitdata')
     cursor = db.cursor()
-    response=requests.get(url,auth=('usename','passward')).json();
+    response=requests.get(url,auth=('usename','passward')).json()
     item = response.get('items')
     url1=[]
     sql = 'INSERT INTO User(id,name,url,language) values(%s,%s,%s,%s)'
@@ -65,7 +65,7 @@ def myfun(language):
      url=it.get('html_url')
      url1.append(it.get('url'))
      # url1=it.get('url')
-     # res=requests.get(url1,auth=('Liu15625177108','3231433wani1314')).json()
+     # res=requests.get(url1,auth=('usename','passward')).json()
      # followers=res.get('followers')
      # name=res.get('name')
      try:
@@ -85,6 +85,7 @@ def myfun(language):
 if __name__=='__main__':
     db = pymysql.connect(host='localhost', user='root', password='123456', port=3306, db='gitdata')
     cursor = db.cursor()
+    cursor.execute("DROP TABLE IF EXISTS user")
     sql = 'CREATE TABLE IF NOT EXISTS User(id INT NOT NUll,name VARCHAR(255) NOT NULL,url VARCHAR(255) NOT NULL,followers INT ,language VARCHAR(50) NOT NULL,PRIMARY KEY (id))'
     cursor.execute(sql)
     db.close()

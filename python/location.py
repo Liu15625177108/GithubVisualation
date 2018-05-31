@@ -24,8 +24,9 @@ def myfun(area):
     cursor = db.cursor()
     # sql = 'CREATE TABLE IF NOT EXISTS '+L+'(id VARCHAR(255) NOT NULL,   name VARCHAR(255) NOT NULL,star INT NOT NULL,url VARCHAR(255) NOT NULL, language VARCHAR(255) NOT NULL, PRIMARY KEY (id))'
     # cursor.execute(sql)
-    response=requests.get(url).json();
+    response=requests.get(url,auth=('usename','passward')).json()
     count=response.get('total_count')
+    print(area,count)
     sql = 'INSERT INTO Location(location,usernum) values(%s, %s)'
     try:
         cursor.execute(sql, (area,count))
@@ -40,11 +41,18 @@ def myfun(area):
 if __name__=='__main__':
     db = pymysql.connect(host='localhost', user='root', password='123456', port=3306, db='gitdata')
     cursor = db.cursor()
-    sql = 'CREATE TABLE IF NOT EXISTS  Location(location VARCHAR(255) NOT NULL, usernum int NOT NULL , PRIMARY KEY (location))'
+    cursor.execute("DROP TABLE IF EXISTS location")
+    sql = 'CREATE TABLE IF NOT EXISTS  Location(location VARCHAR(255) NOT NULL, usernum int  , PRIMARY KEY (location))'
     cursor.execute(sql)
-    pool = ThreadPool()
-    area = ['Beijing','Shanghai','Chongqing','Hebei','Henan','Hubei','Hunan','Jiangsu','Jiangxi',
-            'Liaoning','Jilin'
-            ]
-    pool.map(myfun, area)
-    pool.close()
+    # pool = ThreadPool()
+    area = [ 'Anhui','Beijing','Fujian','Gansu','Guangdong',
+             'Guangxi','Guizhou','Hainan','Hebei','Henan','Heilongjiang',
+             'Hubei','Hunan','Jilin','Jiangsu','Jiangxi','Liaoning','Inner Mongoria IM',
+             'Ningxia','Qinghai','Shandong','Shanxi','Shaanxi','Shanghai','Sichuan','Tianjing',
+             'Tibet','Xinjiang','Yunnan','Zhejiang','Chongqing','Macao','Hong Kong','Taiwan']
+
+    # pool.map(myfun, area)
+
+    # pool.close()
+    for it in area:
+        myfun(it)
