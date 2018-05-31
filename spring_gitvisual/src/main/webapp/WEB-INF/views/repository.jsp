@@ -18,7 +18,7 @@
                 <div class="ui container segment" style="line-height: 40px">
                     <h3>Top 30 Repositories</h3>
                     <c:forEach items="${repositories}" var="rep" varStatus="i">
-                        <a class="ui ${colors[(i.index)%12]} label" style="font-size: 14px">${rep}</a>
+                        <a class="ui ${colors[(i.index)%12]} label" style="font-size: 14px" href="${rep.url}" target="_blank">${rep.name}</a>
                     </c:forEach>
                 </div>
             </div>
