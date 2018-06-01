@@ -10,7 +10,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %><%--这个非常重要--%>
 <rapid:override name="content">
-    <div class="ui equal width grid" style="margin: 5px 0 5px 30px;width: 70%">
+    <div class="ui equal width grid change_margin" style="margin: 5px 0 5px 30px;width: 70%">
         <div class="row">
             <div class="column">
                 <div class="ui red segment">

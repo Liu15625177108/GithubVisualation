@@ -11,11 +11,11 @@
 <%@ page isELIgnored="false" %><%--这个非常重要--%>
 
 <rapid:override name="content">
-    <div class="ui equal width grid" style="margin: 5px 0 5px 30px;width: 75%">
+    <div class="ui equal width grid change_margin" style="margin: 5px 0 5px 30px;width: 75%">
         <div class="row">
             <div class="column">
                 <!--以下为图表区域，记得设置高度-->
-                <div class="ui container segment" id="chart" style="height:550px"></div>
+                <div class="ui container segment" id="chart" style="height:85%"></div>
             </div>
         </div>
     </div>
@@ -47,19 +47,27 @@
             var name = v.properties.name;
             // 地区经纬度
             geoCoordMap[name] = v.properties.cp;
+            var usernum=100;
+            <c:forEach items="${areas}" var="area1">
+                if ('${area1.location}'==name)
+                     usernum=${area1.usernum};
+            </c:forEach>
             data.push({
                 name: name,    //地区名称，记得从数据库加载
-                value: Math.round(Math.random() * 100 + 10)    //对应的数值
+                // value: Math.round(Math.random() * 100 + 10)    //对应的数值
+                value:usernum
             });
             toolTipData.push({
                 name: name,    //地区名称，记得从数据库加载
                 value: [{
                     name: "用户数",
-                    value: Math.round(Math.random() * 100 + 10)    //对应的数值
+                    // value: Math.round(Math.random() * 100 + 10)    //对应的数值
+                    value:usernum
                 }
                 ]
             })
         });
+
 
         var max = 480,
             min = 9; // todo

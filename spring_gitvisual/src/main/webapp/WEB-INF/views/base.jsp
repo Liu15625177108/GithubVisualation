@@ -54,7 +54,7 @@
 <!--以下为网站内容-->
 <div class="pusher">
     <!--这是顶部菜单-->
-    <div class="ui secondary menu" style="padding: 15px 280px 5px 16px;margin: 0px">
+    <div class="ui secondary menu change_color" style="margin: 15px 280px 5px 16px">
         <a class="item" id="my_menu">
             Menu
             <i class="content icon"></i>
@@ -83,6 +83,11 @@
 <script>
     $('#my_menu').click(function () {
         $('.ui.sidebar').sidebar('toggle');
+        $('.change_margin').css("margin", "50px auto 20px");      //点击隐藏菜单后使内容居中
+
+        $('.change_color').removeClass("secondary");    //反转顶部菜单栏颜色，并使其固定在顶部
+        $('.change_color').addClass("large fixed");     //加上颜色很丑，就不加吧（颜色：blue inverted）
+        $('.change_color').css("margin", "0px 0px");
     });
     // $('#summary').click(function () {
     //     $('.item').removeClass('active');

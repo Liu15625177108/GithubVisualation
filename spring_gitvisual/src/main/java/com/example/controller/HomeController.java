@@ -1,18 +1,29 @@
 package com.example.controller;
 
+import com.example.model.area;
 import com.example.model.language;
+import com.example.model.repository;
+import com.example.service.areaService;
 import com.example.service.languageService;
+import com.example.service.repositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HomeController {
     @Autowired
     private languageService lanService;
+    @Autowired
+    private repositoryService rService;
+    @Autowired
+    private areaService AreaService;
 
     @RequestMapping("/summary")
     //当访问http://localhost:8080/spring_gitvisual/summary
@@ -56,6 +67,8 @@ public class HomeController {
     @RequestMapping("/area")
     //http://localhost:8080/spring_gitvisual/area
     public String area(ModelMap model) {
+        List<area> areas=AreaService.findAll();
+        model.addAttribute("areas", areas);
         return "area";
     }
 
@@ -64,12 +77,17 @@ public class HomeController {
     public String repository(ModelMap model) {
         String[] languages = {"JavaScript", "Python", "Java", "C#", "C++", "PHP", "Ruby", "HTML", "C", "Shell"};
         String[] colors = {"orange", "red", "yellow", "olive", "green", "teal", "blue", "violet", "purple", "pink", "brown", "grey", "black"};
-        String[] repositories = {"freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
-                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
-                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
-                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
-                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
-                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow"};  //这个需要改为数据库获取
+
+//        String[] repositories = {"freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
+//                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
+//                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
+//                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
+//                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
+//                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow"};  //这个需要改为数据库获取
+        List <repository> repositories=rService.sortByStar();
+        List<repository> lanrepository=rService.findByLanguage("C++");
+
+
         model.addAttribute("languages", languages);
         model.addAttribute("colors", colors);
         model.addAttribute("repositories", repositories);

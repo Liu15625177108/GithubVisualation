@@ -11,14 +11,14 @@
 <%@ page isELIgnored="false" %><%--这个非常重要--%>
 
 <rapid:override name="content">
-    <div class="ui equal width grid" style="margin: 5px 0 5px 30px;width: 75%">
+    <div class="ui equal width grid change_margin" style="margin: 5px 0 5px 30px;width: 75%">
         <div class="row">
             <div class="column">
                 <!--以下为图表区域-->
                 <div class="ui container segment" style="line-height: 40px">
                     <h3>Top 30 Repositories</h3>
                     <c:forEach items="${repositories}" var="rep" varStatus="i">
-                        <a class="ui ${colors[(i.index)%12]} label" style="font-size: 14px">${rep}</a>
+                        <a class="ui ${colors[(i.index)%12]} label" style="font-size: 14px" href="${rep.url}" target="_blank">${rep.name}</a>
                     </c:forEach>
                 </div>
             </div>
