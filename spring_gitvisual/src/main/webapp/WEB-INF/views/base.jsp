@@ -7,9 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="rapid" uri="http://www.rapid-framework.org.cn/rapid" %>
+<%--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" />--%>
 <html>
+
 <head>
-    <meta charset="UTF-8">
+    <%--<meta charset="UTF-8">--%>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Git-Visualization</title>
     <link rel="stylesheet" href="css/semantic.css"/>
     <script src="js/jquery.js"></script>    <%--放在semantic.js前面--%>

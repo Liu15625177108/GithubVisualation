@@ -13,8 +13,8 @@
     <div class="ui equal width grid change_margin" style="margin: 5px 0 5px 30px;width: 70%">
         <div class="row">
             <div class="column">
-                <div class="ui red segment">
-                    <div class="ui statistic">
+                <div class="ui red segment" style="height: 15%">
+                    <div class="ui statistic" style="margin-top: 3%">
                         <div class="value">
                                 ${repNums}
                         </div>
@@ -25,8 +25,8 @@
                 </div>
             </div>
             <div class="column">
-                <div class="ui blue segment">
-                    <div class="ui statistic">
+                <div class="ui blue segment" style="height: 15%">
+                    <div class="ui statistic" style="margin-top: 3%">
                         <div class="value">
                                 ${userNums}
                         </div>
@@ -38,11 +38,12 @@
             </div>
         </div>
         <div class="row">
+
             <!--卡片组，用于显示排行榜-->
             <div class="column">
-                <div class="ui link card">
-                    <img src="img/language.jpg" height="100px">
-                    <table class="ui striped table" style="margin-top: 0px">
+                <div class="ui fluid card">
+                    <img src="img/language.jpg" height="20%" >
+                    <table class="ui striped table" style="margin-top: 0px;height: 40%">
                         <tbody>
                         <c:forEach begin="0" end="5" var="i">
                             <c:set var="item" value="${lanList2[i]}"/>
@@ -57,9 +58,9 @@
                 </div>
             </div>
             <div class="column">
-                <div class="ui link card">
-                    <img src="img/area.jpg" height="100px">
-                    <table class="ui striped table" style="margin-top: 0px">
+                <div class="ui fluid card">
+                    <img src="img/area.jpg" height="20%">
+                    <table class="ui striped table" style="margin-top: 0px;height: 40%"">
                         <tbody>
                         <tr>
                             <td>No.1</td>
@@ -90,9 +91,9 @@
                 </div>
             </div>
             <div class="column">
-                <div class="ui link card">
-                    <img src="img/repository.jpg" height="100px">
-                    <table class="ui striped table" style="margin-top: 0px">
+                <div class="ui fluid card">
+                    <img src="img/repository.jpg" height="20%">
+                    <table class="ui striped table" style="margin-top: 0px;height: 40%"">
                         <tbody>
                         <tr>
                             <td>No.1</td>
