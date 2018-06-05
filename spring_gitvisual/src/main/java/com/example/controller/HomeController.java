@@ -1,8 +1,11 @@
 package com.example.controller;
 
+import cn.org.rapid_framework.web.session.wrapper.HttpServletRequestSessionWrapper;
 import com.example.model.area;
+import com.example.model.user;
 import com.example.model.language;
 import com.example.model.repository;
+import com.example.service.userService;
 import com.example.service.areaService;
 import com.example.service.languageService;
 import com.example.service.repositoryService;
@@ -10,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,6 +29,8 @@ public class HomeController {
     private repositoryService rService;
     @Autowired
     private areaService AreaService;
+    @Autowired
+    private userService UserService;
 
     @RequestMapping("/summary")
     //当访问http://localhost:8080/spring_gitvisual/summary
@@ -67,10 +74,14 @@ public class HomeController {
     @RequestMapping("/area")
     //http://localhost:8080/spring_gitvisual/area
     public String area(ModelMap model) {
-        List<area> areas=AreaService.findAll();
+        List<area> areas = AreaService.findAll();
         model.addAttribute("areas", areas);
         return "area";
     }
+
+
+
+
 
     @RequestMapping("/repository")
     //http://localhost:8080/spring_gitvisual/repository
@@ -85,21 +96,26 @@ public class HomeController {
 //                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
 //                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow"};  //这个需要改为数据库获取
         List <repository> repositories=rService.sortByStar();
-        List<repository> lanrepository=rService.findByLanguage("C++");
-
-
+//        List<repository> lanrepository=rService.findByLanguage(q);
+//        String l="java";
+//        model.addAttribute("test",l);
+//        model.addAttribute("lanrepository",lanrepository);
         model.addAttribute("languages", languages);
         model.addAttribute("colors", colors);
         model.addAttribute("repositories", repositories);
         return "repository";
     }
 
+
+
     @RequestMapping("/user")
     //http://localhost:8080/spring_gitvisual/user
     public String user(ModelMap model) {
         String[] languages = {"JavaScript", "Python", "Java", "C#", "C++", "PHP", "Ruby", "HTML", "C", "Shell"};
-        String[] users = {"Ruan YiFeng", "TJ Holowaychuk", "Evan You", "Ruan YiFeng", "TJ Holowaychuk", "Evan You"};
+//        String[] users = {"Ruan YiFeng", "TJ Holowaychuk", "Evan You", "Ruan YiFeng", "TJ Holowaychuk", "Evan You"};
         String[] colors = {"orange", "red", "yellow", "olive", "green", "teal", "blue", "violet", "purple", "pink", "brown", "grey", "black"};
+       List<user> users=UserService.sortByStar();
+
         model.addAttribute("colors", colors);
         model.addAttribute("users", users);
         model.addAttribute("languages", languages);

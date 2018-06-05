@@ -21,7 +21,7 @@ public class repositoryDaoImpl implements repositoryDAO {
     }
     @Override
     public List<repository> findByLanguage(String language) {
-        String sql = "SELECT * FROM repository WHERE language=?";
+        String sql = "SELECT * FROM repository WHERE language=? order by star DESC limit 1,6";
         return this.template.query(sql, new Object[]{language}, new repositoryMapper());
     }
 

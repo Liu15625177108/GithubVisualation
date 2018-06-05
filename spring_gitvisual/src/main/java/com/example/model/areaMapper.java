@@ -10,6 +10,7 @@ public class areaMapper implements RowMapper<area> {
         area Area = new area();
         Area.setLocation(rs.getString("location"));
         Area.setUsernum(rs.getInt("usernum"));
+        Area.setChinaName(rs.getString("ChinaName"));
         return Area;
     }
 }

@@ -23,6 +23,11 @@
                 </div>
             </div>
         </div>
+<%--&lt;%&ndash;try of form&ndash;%&gt;--%>
+        <%--<form action="${pageContext.request.contextPath }/repository" method="post">--%>
+            <%--<input type="text" name="q"  value=${test}>--%>
+            <%--<input type="submit"/>--%>
+        <%--</form>--%>
 
             <%--第二行--%>
         <div class="row">
@@ -33,7 +38,9 @@
                     <div class="ui floating dropdown labeled icon button">
                         <i class="filter icon"></i>
                         <span class="text">Select Language</span>
+                        
                         <div class="menu">
+
                             <div class="ui icon search input">
                                 <i class="search icon"></i>
                                 <input type="text" placeholder="Search tags...">
@@ -43,10 +50,11 @@
                                 <c:forEach items="${languages}" var="lan">
                                     <div class="item">
                                         <div class="ui empty circular label"></div>
-                                            ${lan}
+                                                ${lan}
                                     </div>
                                 </c:forEach>
                             </div>
+
                         </div>
                     </div>
                         <%--图表区域--%>
@@ -60,11 +68,63 @@
     <script>
         $('#repository').addClass('active');
         $('.ui.floating.dropdown').dropdown();  //下拉菜单
+        // $(".scrolling menu.item").each(function () {
+        //     this.click(function () {
+        //         var params={};
+        //         params.language=java;
+        //         $.ajax({
+        //                 async:false,
+        //                 type: "POST",
+        //                 url: "repository",//注意路径
+        //                 data:params,
+        //                 dataType:"json",
+        //                 success:function(data){
+        //                     if(data.result=='SUCCESS'){
+        //                         alert("修改成功");
+        //                     }else{
+        //                         alert("修改失败，失败原因【" + data + "】");
+        //                     }
+        //                 },
+        //                 error:function(data){
+        //                     alert(data.result);
+        //                 }
+        //             })
+        //     });
+        // });
+        $(".menu.scrolling .item").click(function () {
+           alert($(this).text());
+           //  $.ajax({
+           //      url:"repository",
+           //      data:{"Language":$(this).text()},
+           //      type:"POST",
+           //      dataType:"html",
+           //      success: function(data,textstatus){
+           //          alert(textstatus);
+           //      },
+           //      error:function(jqxhr,textstatus,error){
+           //          alert(jqxhr);
+           //          alert(error);
+           //          alert(textstatus);
+           //      }
+           //  });
+
+        });
+
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('chart'));
         // 从HomeController中获取数据，遍历得到的表
 
         // 指定图表的配置项和数据
+        <%--var Repositoryname=new Array();--%>
+        <%--var star=new Array();--%>
+        <%--var fork=new Array();--%>
+        <%--var i=0;--%>
+        <%--<c:forEach items="${lanrepository}" var="lan">--%>
+            <%--Repositoryname[i]="${lan.name}";--%>
+            <%--star[i]=${lan.star};--%>
+            <%--fork[i]=${lan.fork}--%>
+            <%--i++;--%>
+        <%--</c:forEach>--%>
         var option = {
             title: {
                 text: 'Popular Repositories'
@@ -91,6 +151,7 @@
             yAxis: {
                 type: 'category',
                 data: ['freeCodeCamp', 'react', 'vue', 'react-native', 'create-react-app', 'angular.js']
+                // data:Repositoryname
             },
             series: [
                 {
@@ -99,6 +160,7 @@
                     // color: '#297bf3',
                     // barWidth : 30,
                     data: [18203, 23489, 29034, 104970, 131744, 130230]
+                    // data:star
                 },
                 {
                     name: 'Fork Numbers',
@@ -106,6 +168,7 @@
                     // color: '#d1313a',
                     // barWidth : 30,
                     data: [19325, 23438, 31000, 121594, 134141, 181807]
+                    // data:fork
                 }
             ]
         };

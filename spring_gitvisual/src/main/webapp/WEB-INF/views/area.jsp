@@ -15,17 +15,17 @@
         <div class="row">
             <div class="column">
                 <!--以下为图表区域，记得设置高度-->
-                <div class="ui container segment" id="chart" style="height:85%"></div>
+                <div class="ui container segment" id="chart" style="height:85%" ></div>
             </div>
         </div>
     </div>
 
     <script>
+
         $('#area').addClass('active');
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('chart'));
         // 从HomeController中获取数据，遍历得到的表
-
         // 指定图表的配置项和数据
         //参考http://gallery.echartsjs.com/editor.html?c=xrJU-aE-LG
         var name_title = "GitHub中国各地区用户数\n"
@@ -34,42 +34,61 @@
         var name_fontFamily = '宋体'
         var name_fontSize = 35
         var mapName = 'china'
-        var data = []
+        var data = [];  //从数据库获取
+        // 例子：http://gallery.echartsjs.com/editor.html?c=xBJDR584vG
         var geoCoordMap = {};
-        var toolTipData = [];
+        var toolTipData = [];       //从数据库获取
 
         /*获取地图数据*/
         myChart.showLoading();
         var mapFeatures = echarts.getMap(mapName).geoJson.features;
         myChart.hideLoading();
+        <c:forEach items="${areas}" var="area">
+        data.push({
+            name: '${area.chinaName}',    //地区名称，记得从数据库加载
+            value: ${area.usernum}    //对应的数值
+        });
+        toolTipData.push({
+            name: '${area.chinaName}',    //地区名称，记得从数据库加载
+            value: [{
+                name: "用户数",
+                value: ${area.usernum}    //对应的数值
+            }
+            ]
+        });
+        </c:forEach>
+        /*获取地图数据*/
+        myChart.showLoading();
+        var mapFeatures = echarts.getMap(mapName).geoJson.features;
+        myChart.hideLoading();
+        // var usenum=100;
         mapFeatures.forEach(function(v) {
             // 地区名称
             var name = v.properties.name;
             // 地区经纬度
             geoCoordMap[name] = v.properties.cp;
-            var usernum=100;
-            <c:forEach items="${areas}" var="area1">
-                if ('${area1.location}'==name)
-                     usernum=${area1.usernum};
-            </c:forEach>
-            data.push({
-                name: name,    //地区名称，记得从数据库加载
-                // value: Math.round(Math.random() * 100 + 10)    //对应的数值
-                value:usernum
-            });
-            toolTipData.push({
-                name: name,    //地区名称，记得从数据库加载
-                value: [{
-                    name: "用户数",
-                    // value: Math.round(Math.random() * 100 + 10)    //对应的数值
-                    value:usernum
-                }
-                ]
-            })
+            <%--<c:forEach items="${areas}" var="lan">--%>
+                <%--if("${lan.chinaName}"==name)--%>
+                    <%--usenum=${lan.usernum}--%>
+            <%--</c:forEach>--%>
+            <%--data.push({--%>
+                <%--// name: name,    //地区名称，记得从数据库加载--%>
+                <%--// value: Math.round(Math.random() * 50000 + 10)    //对应的数值--%>
+                <%--name:"${areas.get(i).chinaName}",--%>
+                <%--value:${areas.get(i).usernum}--%>
+            <%--});--%>
+            <%--toolTipData.push({--%>
+                <%--name:"${areas.get(i).chinaName}",   //地区名称，记得从数据库加载--%>
+                <%--value: [{--%>
+                    <%--name:"用户数：",--%>
+                    <%--value:${areas.get(i).usernum}--%>
+                <%--}--%>
+                <%--]--%>
+            <%--})--%>
+
         });
 
-
-        var max = 480,
+        var max = 100000,    //num level
             min = 9; // todo
         var maxSize4Pin = 100,
             minSize4Pin = 20;
@@ -142,7 +161,7 @@
             visualMap: {
                 show: false,
                 min: 0,
-                max: 500,
+                max: 100000,   //num level
                 left: 'left',
                 top: 'bottom',
                 text: ['高', '低'], // 文本，默认为数值文本
@@ -206,7 +225,7 @@
                 coordinateSystem: 'geo',
                 data: convertData(data),
                 symbolSize: function(val) {
-                    return val[2] / 10;
+                    return val[2] / 5000;   //1000num level 除以10
                 },
                 label: {
                     normal: {
@@ -294,7 +313,7 @@
                         return b.value - a.value;
                     }).slice(0, 5)),
                     symbolSize: function(val) {
-                        return val[2] / 10;
+                        return val[2] / 10000;   //1000为num level 除以10
                     },
                     showEffectOn: 'render',
                     rippleEffect: {

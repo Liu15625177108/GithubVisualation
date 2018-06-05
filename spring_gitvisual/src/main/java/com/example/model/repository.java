@@ -3,6 +3,10 @@ package com.example.model;
 public class repository {
     private int id;
     private String name;
+    private int star;
+    private  int fork;
+    private  String url;
+    private  String language;
 
     public repository(){}
     public repository(int id, String name, int star, String url, String language) {
@@ -13,9 +17,13 @@ public class repository {
         this.language = language;
     }
 
-    private int star;
-    private  String url;
-    private  String language;
+    public int getFork() {
+        return fork;
+    }
+
+    public void setFork(int fork) {
+        this.fork = fork;
+    }
 
     public int getId() {
         return id;

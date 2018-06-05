@@ -11,6 +11,7 @@ public class repositoryMapper implements RowMapper<repository> {
         rep.setId(rs.getInt("id"));
         rep.setName(rs.getString("name"));
         rep.setStar(rs.getInt("star"));
+        rep.setFork(rs.getInt("fork"));
         rep.setUrl(rs.getString("url"));
         rep.setLanguage(rs.getString("language"));
         return rep;
