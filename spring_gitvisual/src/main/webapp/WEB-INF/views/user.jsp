@@ -41,10 +41,7 @@
                                     <div class="divider"></div>
                                     <div class="scrolling menu">
                                         <c:forEach items="${languages}" var="lan">
-                                            <div class="item">
-                                                <div class="ui empty circular label"></div>
-                                                    ${lan}
-                                            </div>
+                                            <div class="item"><div class="ui empty circular label"></div>${lan}</div>
                                         </c:forEach>
                                     </div>
                                 </div>
@@ -60,6 +57,84 @@
     <script>
         $('#user').addClass('active');
         $('.ui.floating.dropdown').dropdown();  //下拉菜单
+        $(".menu.scrolling .item").click(function () {
+            // alert($(this).text());
+
+            var L = $(this).text();
+            var qData = {
+                language: $(this).text()
+            };
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/spring_gitvisual/user/ajax",
+                data: qData,
+                success: function (data) {
+                    //此处省略
+                    // alert("success");
+                    var Username = new Array();
+                    var followers = new Array();
+                    for (var i = 0; i < 6; i++) {
+                        Username[i] = data.result[i].name;
+                        followers[i] = data.result[i].followers;
+                    }
+                    var myChart = echarts.init(document.getElementById('chart'));
+                    // 从HomeController中获取数据，遍历得到的表
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: 'Popular Users'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['Followers']
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'value',
+                            boundaryGap: [0, 0.01]
+                        },
+                        yAxis: {
+                            type: 'category',
+                            // data: ["Ruan YiFeng", "TJ Holowaychuk", "Evan You", "Ruan YiFeng", "TJ Holowaychuk", "Evan You"]
+                            data:Username
+
+                        },
+                        series: [
+                            {
+                                name: 'Followers',
+                                type: 'bar',
+                                color: '#006388',
+                                // barWidth : 30,
+                                // data: [18203, 23489, 29034, 104970, 131744, 130230]
+                                data:followers
+                            }
+                        ]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+
+                },
+                error: function (data) {
+                    alert("error");
+                }
+            });
+        });
+
+
+
+
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('chart'));
         // 从HomeController中获取数据，遍历得到的表

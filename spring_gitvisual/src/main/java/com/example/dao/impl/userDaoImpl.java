@@ -24,7 +24,7 @@ public class userDaoImpl implements userDAO {
     }
     @Override
     public List<user> findByLanguage(String language) {
-        String sql = "SELECT * FROM user WHERE language=?";
+        String sql = "SELECT * FROM user WHERE language=? order by followers DESC limit 1,6";
         return this.template.query(sql, new Object[]{language}, new userMapper());
     }
 

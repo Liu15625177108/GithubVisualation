@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import cn.org.rapid_framework.web.session.wrapper.HttpServletRequestSessionWrapper;
 import com.example.model.area;
 import com.example.model.user;
 import com.example.model.language;
@@ -12,14 +11,15 @@ import com.example.service.repositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
+
+import java.io.IOException;
+import java.util.*;
 
 @Controller
 public class HomeController {
@@ -79,13 +79,42 @@ public class HomeController {
         return "area";
     }
 
+//
+//    @RequestMapping("/repository/{language}")
+//    public  String fun (@PathVariable(value = "language") String language,ModelMap model){
+//
+//        String[] languages = {"JavaScript", "Python", "Java", "C#", "C++", "PHP", "Ruby", "HTML", "C", "Shell"};
+//        String[] colors = {"orange", "red", "yellow", "olive", "green", "teal", "blue", "violet", "purple", "pink", "brown", "grey", "black"};
+//        System.out.println(language);
+//        List <repository> repositories=rService.sortByStar();
+//
+//
+//        List<repository> lanrepository=rService.findByLanguage(language);
+//        model.addAttribute("lanrepository",lanrepository);
+//        model.addAttribute("languages", languages);
+//        model.addAttribute("colors", colors);
+//        model.addAttribute("repositories", repositories);
+//        return "repository";
+//    }
+
+    @ResponseBody
+    @RequestMapping("repository/ajax")
+        Map<String,List<repository>> fun(HttpServletRequest request){
+        String language=request.getParameter("language");
+        List <repository> mylist=rService.findByLanguage(language);
+        System.out.println(mylist.size());
+        for (int i = 0; i < mylist.size(); i++)
+            System.out.println(mylist.get(i).getName());
+        Map<String,List<repository>> map=new HashMap<String,List<repository>>();
+        map.put("result",mylist);
+        return  map;
+    }
 
 
 
-
-    @RequestMapping("/repository")
+  @RequestMapping("/repository")
     //http://localhost:8080/spring_gitvisual/repository
-    public String repository(ModelMap model) {
+    public String repository(ModelMap model){//, HttpServletRequest rsp,HttpServletResponse response) throws IOException {
         String[] languages = {"JavaScript", "Python", "Java", "C#", "C++", "PHP", "Ruby", "HTML", "C", "Shell"};
         String[] colors = {"orange", "red", "yellow", "olive", "green", "teal", "blue", "violet", "purple", "pink", "brown", "grey", "black"};
 
@@ -95,16 +124,31 @@ public class HomeController {
 //                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
 //                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow",
 //                "freeCodeCamp", "bootstrap", "free-programming-books", "tensorflow"};  //这个需要改为数据库获取
+
         List <repository> repositories=rService.sortByStar();
-//        List<repository> lanrepository=rService.findByLanguage(q);
+
+//      String language=rsp.getParameter("language");
+
+//        if(language!=null) {
+//            System.out.println(language + "----" + language.length());
+//            List<repository> lanrepository = rService.findByLanguage(language);
+//            model.addAttribute("lanrepository",lanrepository);
+//            System.out.println(lanrepository.size());
+//            for (int i = 0; i < lanrepository.size(); i++)
+//                System.out.println(lanrepository.get(i).getName());
+//        }
 //        String l="java";
 //        model.addAttribute("test",l);
-//        model.addAttribute("lanrepository",lanrepository);
+        List<repository> lanrepository = rService.findByLanguage("java");
+        model.addAttribute("lanrepository",lanrepository);
         model.addAttribute("languages", languages);
         model.addAttribute("colors", colors);
         model.addAttribute("repositories", repositories);
         return "repository";
+
     }
+
+
 
 
 
@@ -115,10 +159,23 @@ public class HomeController {
 //        String[] users = {"Ruan YiFeng", "TJ Holowaychuk", "Evan You", "Ruan YiFeng", "TJ Holowaychuk", "Evan You"};
         String[] colors = {"orange", "red", "yellow", "olive", "green", "teal", "blue", "violet", "purple", "pink", "brown", "grey", "black"};
        List<user> users=UserService.sortByStar();
-
         model.addAttribute("colors", colors);
         model.addAttribute("users", users);
         model.addAttribute("languages", languages);
         return "user";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/user/ajax")
+  public Map<String,List<user>> userAjax(HttpServletRequest request){
+        String  language=request.getParameter("language");
+        System.out.println(language);
+        List<user> mylist=UserService.findByLanguage(language);
+        for(int i=0;i<mylist.size();i++)
+            System.out.println(mylist.get(i).getName());
+        Map <String,List<user>> map=new HashMap<String, List<user>>();
+        map.put("result",mylist);
+        return  map;
     }
 }
