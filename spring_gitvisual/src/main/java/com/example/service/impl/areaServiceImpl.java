@@ -16,4 +16,8 @@ public class areaServiceImpl implements areaService{
     public List<area> findAll() {
         return  AreaDao.findAll();
     }
+    @Override
+    public List <area> sortByUsernums(){
+        return AreaDao.sortByUsernums();
+    }
 }

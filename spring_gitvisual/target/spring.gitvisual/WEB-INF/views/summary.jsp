@@ -60,32 +60,16 @@
             <div class="column">
                 <div class="ui fluid card">
                     <img src="img/area.jpg" height="20%">
-                    <table class="ui striped table" style="margin-top: 0px;height: 40%"">
+                    <table class="ui striped table" style="margin-top: 0px;height: 40%">
                         <tbody>
-                        <tr>
-                            <td>No.1</td>
-                            <td>Area A</td>
-                        </tr>
-                        <tr>
-                            <td>No.2</td>
-                            <td>Area B</td>
-                        </tr>
-                        <tr>
-                            <td>No.3</td>
-                            <td>Area C</td>
-                        </tr>
-                        <tr>
-                            <td>No.4</td>
-                            <td>Area D</td>
-                        </tr>
-                        <tr>
-                            <td>No.5</td>
-                            <td>Area E</td>
-                        </tr>
-                        <tr>
-                            <td>No.6</td>
-                            <td>Area F</td>
-                        </tr>
+                        <c:forEach begin="0" end="5" var="i">
+                            <c:set var="item2" value="${areaList[i]}"/>
+                            <tr>
+                                <td>No.${i+1}</td>
+                                <td>${item2.chinaName}</td>
+                            </tr>
+                        </c:forEach>
+
                         </tbody>
                     </table>
                 </div>
@@ -93,32 +77,16 @@
             <div class="column">
                 <div class="ui fluid card">
                     <img src="img/repository.jpg" height="20%">
-                    <table class="ui striped table" style="margin-top: 0px;height: 40%"">
+                    <table class="ui striped table" style="margin-top: 0px;height: 40%">
                         <tbody>
-                        <tr>
-                            <td>No.1</td>
-                            <td>repository A</td>
-                        </tr>
-                        <tr>
-                            <td>No.2</td>
-                            <td>repository B</td>
-                        </tr>
-                        <tr>
-                            <td>No.3</td>
-                            <td>repository C</td>
-                        </tr>
-                        <tr>
-                            <td>No.4</td>
-                            <td>repository D</td>
-                        </tr>
-                        <tr>
-                            <td>No.5</td>
-                            <td>repository E</td>
-                        </tr>
-                        <tr>
-                            <td>No.6</td>
-                            <td>repository F</td>
-                        </tr>
+                        <c:forEach begin="0" end="5" var="i">
+                            <c:set var="item3" value="${repList[i]}"/>
+                            <tr>
+                                <td>No.${i+1}</td>
+                                <td><a href="${item3.url}" target="_blank" style="color:#0f0f0f;">${item3.name}</a></td>
+                            </tr>
+                        </c:forEach>
+
                         </tbody>
                     </table>
                 </div>

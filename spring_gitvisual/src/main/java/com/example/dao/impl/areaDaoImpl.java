@@ -26,4 +26,10 @@ public class areaDaoImpl implements areaDAO{
         String sql = "SELECT * FROM location";
         return this.template.query(sql, new Object[]{}, new areaMapper());
     }
+
+    @Override
+    public List <area> sortByUsernums(){
+        String sql = "SELECT * FROM location ORDER BY usernum DESC";
+        return this.template.query(sql, new Object[]{}, new areaMapper());
+    }
 }

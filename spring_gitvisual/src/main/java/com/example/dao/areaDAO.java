@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface areaDAO {
     List <area> findAll();
+    List <area> sortByUsernums();
 }

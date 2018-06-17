@@ -52,6 +52,15 @@ public class HomeController {
         //语言榜，按仓库数进行降序排序输出
         List<language> lanList2 = lanService.sortByRep();
         model.addAttribute("lanList2", lanList2);
+
+        //地区榜，按用户数进行降序排序输出
+        List<area> areaList = AreaService.sortByUsernums();
+        model.addAttribute("areaList", areaList);
+
+        //仓库榜，按star数进行降序排序输出
+        List<repository> repList = rService.sortByStar();
+        model.addAttribute("repList", repList);
+
         return "summary";
     }
 
