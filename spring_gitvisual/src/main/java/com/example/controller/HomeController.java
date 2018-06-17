@@ -139,8 +139,8 @@ public class HomeController {
 //        }
 //        String l="java";
 //        model.addAttribute("test",l);
-        List<repository> lanrepository = rService.findByLanguage("java");
-        model.addAttribute("lanrepository",lanrepository);
+        List<repository> jsRepository = rService.findByLanguage("JavaScript");
+        model.addAttribute("jsRepository",jsRepository);    //初始化的数据，默认为js的数据
         model.addAttribute("languages", languages);
         model.addAttribute("colors", colors);
         model.addAttribute("repositories", repositories);
@@ -159,9 +159,11 @@ public class HomeController {
 //        String[] users = {"Ruan YiFeng", "TJ Holowaychuk", "Evan You", "Ruan YiFeng", "TJ Holowaychuk", "Evan You"};
         String[] colors = {"orange", "red", "yellow", "olive", "green", "teal", "blue", "violet", "purple", "pink", "brown", "grey", "black"};
        List<user> users=UserService.sortByStar();
+        List<user> jsUsers=UserService.findByLanguage("JavaScript");
         model.addAttribute("colors", colors);
-        model.addAttribute("users", users);
         model.addAttribute("languages", languages);
+        model.addAttribute("users", users);
+        model.addAttribute("jsUsers", jsUsers);     //初始化的数据，默认为js的数据
         return "user";
     }
 
@@ -172,6 +174,7 @@ public class HomeController {
         String  language=request.getParameter("language");
         System.out.println(language);
         List<user> mylist=UserService.findByLanguage(language);
+        System.out.println(mylist.size());
         for(int i=0;i<mylist.size();i++)
             System.out.println(mylist.get(i).getName());
         Map <String,List<user>> map=new HashMap<String, List<user>>();

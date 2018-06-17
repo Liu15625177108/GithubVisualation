@@ -32,7 +32,7 @@
                         <%--菜单栏--%>
                             <div class="ui floating dropdown labeled icon button">
                                 <i class="filter icon"></i>
-                                <span class="text">Select Language</span>
+                                <span class="text">JavaScript</span>
                                 <div class="menu">
                                     <div class="ui icon search input">
                                         <i class="search icon"></i>
@@ -138,7 +138,14 @@
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('chart'));
         // 从HomeController中获取数据，遍历得到的表
-
+        var Username = new Array();
+        var followers = new Array();
+        var i = 0;
+        <c:forEach items="${jsUsers}" var="lan">
+        Username[i] ="${lan.name}";
+        followers[i] = ${lan.followers}
+            i++;
+        </c:forEach>
         // 指定图表的配置项和数据
         var option = {
             title: {
@@ -165,7 +172,7 @@
             },
             yAxis: {
                 type: 'category',
-                data: ["Ruan YiFeng", "TJ Holowaychuk", "Evan You", "Ruan YiFeng", "TJ Holowaychuk", "Evan You"]
+                data: Username
             },
             series: [
                 {
@@ -173,7 +180,7 @@
                     type: 'bar',
                     color: '#006388',
                     // barWidth : 30,
-                    data: [18203, 23489, 29034, 104970, 131744, 130230]
+                    data: followers
                 }
             ]
         };

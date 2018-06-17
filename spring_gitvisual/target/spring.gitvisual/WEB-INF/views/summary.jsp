@@ -14,7 +14,7 @@
         <div class="row">
             <div class="column">
                 <div class="ui red segment" style="height: 15%">
-                    <div class="ui statistic" style="margin-top: 3%">
+                    <div class="ui statistic" style="margin: auto;">
                         <div class="value">
                                 ${repNums}
                         </div>
@@ -26,7 +26,7 @@
             </div>
             <div class="column">
                 <div class="ui blue segment" style="height: 15%">
-                    <div class="ui statistic" style="margin-top: 3%">
+                    <div class="ui statistic" style="margin: auto;">
                         <div class="value">
                                 ${userNums}
                         </div>

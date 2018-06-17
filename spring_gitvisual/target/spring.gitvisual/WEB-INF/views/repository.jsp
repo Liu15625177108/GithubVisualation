@@ -37,7 +37,7 @@
                         <%--菜单栏--%>
                     <div class="ui floating dropdown labeled icon button">
                         <i class="filter icon"></i>
-                        <span class="text">Select Language</span>
+                        <span class="text">JavaScript</span>
                         
                         <div class="menu">
 
@@ -182,7 +182,7 @@
         var star=new Array();
         var fork=new Array();
         var i=0;
-        <c:forEach items="${lanrepository}" var="lan">
+        <c:forEach items="${jsRepository}" var="lan">
             Repositoryname[i]="${lan.name}";
             star[i]=${lan.star};
             fork[i]=${lan.fork}

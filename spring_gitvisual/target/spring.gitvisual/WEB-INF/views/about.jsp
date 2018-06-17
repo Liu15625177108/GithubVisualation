@@ -41,7 +41,8 @@
                                             <a class="header">前端</a>
                                             <div class="ui list">
                                                 <div class="item">UI：Semantic UI 2.3</div>
-                                                <div class="item">JS：JQuery 3.3</div>
+                                                <div class="item">JQuery 3.3</div>
+                                                <div class="item">ajax</div>
                                                 <div class="item">脚手架：rapid-framework 4.0</div>
                                                 <div class="item">图表：ECharts 2.0</div>
                                             </div>

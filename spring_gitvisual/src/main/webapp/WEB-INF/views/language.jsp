@@ -22,21 +22,6 @@
                     </div>
                     <div class="ui bottom attached segment" id="chart" style="height: 400px;padding: 2px"></div>
 
-                    <!--测试用，正式版请删除这个div-->
-                    <div id="test">
-                        <p>测试用，正式版请删除这个div</p>
-                        <p>语言:${lan.type}&nbsp;&nbsp;仓库数:${lan.repositories}&nbsp;&nbsp;用户数:${lan.users}</p>
-                        <table>
-                            <c:forEach items="${lanList}" var="lan2">
-                                <tr>
-                                    <td>${lan2.type} </td>
-                                    <td>${lan2.users} </td>
-                                    <td>${lan2.repositories} </td>
-                                </tr>
-                            </c:forEach>
-                        </table>
-                    </div>
-
                 </div>
             </div>
         </div>

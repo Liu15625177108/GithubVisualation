@@ -29,7 +29,7 @@
         // 指定图表的配置项和数据
         //参考http://gallery.echartsjs.com/editor.html?c=xrJU-aE-LG
         var name_title = "GitHub中国各地区用户数\n"
-        var subname = '气泡是对应的用户数\n\n需要修改的自行数据库对接实时读取数据'
+        var subname = '气泡是对应的用户数'
         var nameColor = " rgb(55, 75, 113)"
         var name_fontFamily = '宋体'
         var name_fontSize = 35
