@@ -11,4 +11,4 @@
 </br>
 <p>预览：</p>
 </br>
-![图片介绍](https://github.com/software-case-course/team_2018_1/blob/master/web_screenshot/preview.png)
+![image](https://github.com/software-case-course/team_2018_1/blob/master/web_screenshot/preview.png)
