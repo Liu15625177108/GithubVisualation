@@ -1,5 +1,4 @@
-# team_2018_1
-<h1>Github可视化</h1>
+# team_2018_1／Github可视化
 <ul>
   <li>组长：朱旭</li>
   <li>组员：林钰国</li>
