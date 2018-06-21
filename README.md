@@ -6,7 +6,8 @@
   <li>组员：钟勇辉</li>
 </ul>
 <p></p>
+</br>
 <p>网站公网IP：<a href="http://193.112.217.221:8080/spring_gitvisual/summary" target="_blank">193.112.217.221:8080/spring_gitvisual/summary</a></p>
 </br>
 <p>预览</p>
-<img src="" />
+<img src="https://github.com/software-case-course/team_2018_1/web_screenshot/preview.png"/>
