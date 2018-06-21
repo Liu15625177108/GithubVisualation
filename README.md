@@ -7,7 +7,7 @@
 </ul>
 <p></p>
 </br>
-<p>网站公网IP：<a href="http://193.112.217.221:8080/spring_gitvisual/summary" target="_blank">193.112.217.221:8080/spring_gitvisual/summary</a></p>
+<p>网站公网IP：<a href="http://193.112.217.221:8080/spring_gitvisual/summary">193.112.217.221:8080/spring_gitvisual/summary</a></p>
 </br>
 <p>预览：</p>
 ![image](https://github.com/software-case-course/team_2018_1/blob/master/web_screenshot/preview.png)
