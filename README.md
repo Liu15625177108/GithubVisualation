@@ -9,5 +9,6 @@
 </br>
 <p>网站公网IP：<a href="http://193.112.217.221:8080/spring_gitvisual/summary" target="_blank">193.112.217.221:8080/spring_gitvisual/summary</a></p>
 </br>
-<p>预览</p>
+<p>预览：</p>
+</br>
 ![图片介绍](https://github.com/software-case-course/team_2018_1/blob/master/web_screenshot/preview.png)
