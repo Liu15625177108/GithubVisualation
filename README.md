@@ -7,3 +7,6 @@
 </ul>
 <p></p>
 <p>网站公网IP：<a href="http://193.112.217.221:8080/spring_gitvisual/summary" target="_blank">193.112.217.221:8080/spring_gitvisual/summary</a></p>
+</br>
+<p>预览</p>
+<img src="" />
