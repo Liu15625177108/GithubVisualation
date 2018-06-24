@@ -69,6 +69,11 @@ public class HomeController {
     public String about() {
         return "about";
     }
+    @RequestMapping("/homepage")
+    //http://localhost:8080/spring_gitvisual/about
+    public String homepage() {
+        return "homepage";
+    }
 
     @RequestMapping("/language")
     //http://localhost:8080/spring_gitvisual/language

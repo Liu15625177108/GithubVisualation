@@ -22,22 +22,16 @@
     <script src="js/semantic.js"></script>
     <script src="js/echarts.min.js"></script>
     <script src="js/china.js"></script>
-    <style>
-        body {
-            margin: 0px;
-            padding: 0px;
-        }
-    </style>
 </head>
 <body>
 <!--左侧栏-->
-<div class="ui left visible sidebar inverted vertical menu">
+<div class="ui left sidebar inverted vertical menu">
     <div class="item">
         <a class="ui icon image" href="#">
             <img src="img/github.jpg" height="50px" width="50px"/>
         </a>
         <a href="#">
-            <b>&nbsp;&nbsp;&nbsp;GitHub可视化</b>
+            <b>&nbsp;&nbsp;&nbsp;GitHub Visualization</b>
         </a>
     </div>
     <a class="item" id="language" href="http://localhost:8080/spring_gitvisual/language">
@@ -60,27 +54,19 @@
 <!--以下为网站内容-->
 <div class="pusher">
     <!--这是顶部菜单-->
-    <div class="ui secondary menu change_color" style="margin: 15px 280px 5px 16px">
-        <a class="item" id="my_menu">
-            Menu
-            <i class="content icon"></i>
-        </a>
-        <a class="item" id="summary" href="http://localhost:8080/spring_gitvisual/summary">
-            概况
-        </a>
-        <a class="item" id="about" href="http://localhost:8080/spring_gitvisual/about">
-            关于我们
-        </a>
-        <div class="right menu">
-            <div class="item">
-                <div class="ui icon input">
-                    <input type="text" placeholder="Search...">
-                    <i class="search link icon"></i>
-                </div>
+    <div class="ui inverted vertical masthead center aligned segment" style="padding: 8px 8px;">
+        <div class="ui container">
+            <div class="ui large secondary inverted pointing menu">
+                <a class="item" id="my_menu">
+                    Menu
+                    <i class="sidebar icon"></i>
+                </a>
+                <a class="item" id="home" href="http://localhost:8080/spring_gitvisual/homepage">Home</a>
+                <a class="item" id="summary" href="http://localhost:8080/spring_gitvisual/summary">Summary</a>
+                <a class="item"  id="about" href="http://localhost:8080/spring_gitvisual/about">About</a>
             </div>
         </div>
     </div>
-    <div class="ui divider" style="margin: 0px"></div>
     <!--这是正文部分-->
     <rapid:block name="content">
         123
@@ -89,11 +75,11 @@
 <script>
     $('#my_menu').click(function () {
         $('.ui.sidebar').sidebar('toggle');
-        $('.change_margin').css("margin", "50px auto 20px");      //点击隐藏菜单后使内容居中
+        // $('.change_margin').css("margin", "50px auto 20px");      //点击隐藏菜单后使内容居中
 
-        $('.change_color').removeClass("secondary");    //反转顶部菜单栏颜色，并使其固定在顶部
-        $('.change_color').addClass("large fixed");     //加上颜色很丑，就不加吧（颜色：blue inverted）
-        $('.change_color').css("margin", "0px 0px");
+        // $('.change_color').removeClass("secondary");    //反转顶部菜单栏颜色，并使其固定在顶部
+        // $('.change_color').addClass("large fixed");     //加上颜色很丑，就不加吧（颜色：blue inverted）
+        // $('.change_color').css("margin", "0px 0px");
     });
     // $('#summary').click(function () {
     //     $('.item').removeClass('active');

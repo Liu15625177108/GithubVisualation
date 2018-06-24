@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="rapid" uri="http://www.rapid-framework.org.cn/rapid" %>
 <rapid:override name="content">
-    <div class="ui equal width grid change_margin" style="margin: 5px 0 5px 30px;width: 70%">
+    <div class="ui equal width grid" style="margin: auto;width: 80%">
         <div class="row">
             <div class="column">
                 <!--以下为关于正文-->

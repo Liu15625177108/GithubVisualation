@@ -10,7 +10,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %><%--这个非常重要--%>
 <rapid:override name="content">
-    <div class="ui equal width grid change_margin" style="margin: 5px 0 5px 30px;width: 70%">
+    <div class="ui equal width grid" style="margin: auto;width: 80%">
         <div class="row">
             <div class="column">
                 <div class="ui red segment" style="height: 15%">
@@ -40,7 +40,7 @@
         <div class="row">
 
             <!--卡片组，用于显示排行榜-->
-            <div class="column">
+            <a class="column" href="http://localhost:8080/spring_gitvisual/language">
                 <div class="ui fluid card">
                     <img src="img/language.jpg" height="20%" >
                     <table class="ui striped table" style="margin-top: 0px;height: 40%">
@@ -56,8 +56,8 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="column">
+            </a>
+            <a class="column" href="http://localhost:8080/spring_gitvisual/area">
                 <div class="ui fluid card">
                     <img src="img/area.jpg" height="20%">
                     <table class="ui striped table" style="margin-top: 0px;height: 40%">
@@ -66,15 +66,15 @@
                             <c:set var="item2" value="${areaList[i]}"/>
                             <tr>
                                 <td>No.${i+1}</td>
-                                <td>${item2.chinaName}</td>
+                                <td>${item2.location}</td>
                             </tr>
                         </c:forEach>
 
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="column">
+            </a>
+            <a class="column" href="http://localhost:8080/spring_gitvisual/repository">
                 <div class="ui fluid card">
                     <img src="img/repository.jpg" height="20%">
                     <table class="ui striped table" style="margin-top: 0px;height: 40%">
@@ -83,14 +83,14 @@
                             <c:set var="item3" value="${repList[i]}"/>
                             <tr>
                                 <td>No.${i+1}</td>
-                                <td><a href="${item3.url}" target="_blank" style="color:#0f0f0f;">${item3.name}</a></td>
+                                <td>${item3.name}</td>
                             </tr>
                         </c:forEach>
 
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </a>
 
         </div>
     </div>

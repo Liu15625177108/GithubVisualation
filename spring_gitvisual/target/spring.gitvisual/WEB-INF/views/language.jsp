@@ -11,7 +11,7 @@
 <%@ page isELIgnored="false" %><%--这个非常重要--%>
 
 <rapid:override name="content">
-    <div class="ui equal width grid change_margin" style="margin: 5px 0 5px 30px;width: 75%">
+    <div class="ui equal width grid" style="margin: auto;width: 80%">
         <div class="row">
             <div class="column">
                 <!--以下为图表区域-->
